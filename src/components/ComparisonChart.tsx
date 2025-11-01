@@ -5,7 +5,7 @@ import { useTranslation } from '@/lib/translations';
 
 interface ComparisonChartProps {
     comparison: Comparison;
-    language: 'en' | 'hi';
+    language: 'en' | 'kn' | 'hi';
 }
 
 export const ComparisonChart: React.FC<ComparisonChartProps> = ({ comparison, language }) => {
@@ -53,7 +53,7 @@ export const ComparisonChart: React.FC<ComparisonChartProps> = ({ comparison, la
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <p className="text-sm text-gray-600">{t.households}</p>
                     <p className={`text-2xl font-bold ${comparison.comparison.householdsChange > 0 ? 'text-green-600' :
-                            comparison.comparison.householdsChange < 0 ? 'text-red-600' : 'text-gray-600'
+                        comparison.comparison.householdsChange < 0 ? 'text-red-600' : 'text-gray-600'
                         }`}>
                         {comparison.comparison.householdsChange > 0 ? '↑' : comparison.comparison.householdsChange < 0 ? '↓' : '→'}
                         {Math.abs(comparison.comparison.householdsChange).toFixed(1)}%
@@ -63,7 +63,7 @@ export const ComparisonChart: React.FC<ComparisonChartProps> = ({ comparison, la
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <p className="text-sm text-gray-600">{t.averageDays}</p>
                     <p className={`text-2xl font-bold ${comparison.comparison.daysWorkedChange > 0 ? 'text-green-600' :
-                            comparison.comparison.daysWorkedChange < 0 ? 'text-red-600' : 'text-gray-600'
+                        comparison.comparison.daysWorkedChange < 0 ? 'text-red-600' : 'text-gray-600'
                         }`}>
                         {comparison.comparison.daysWorkedChange > 0 ? '↑' : comparison.comparison.daysWorkedChange < 0 ? '↓' : '→'}
                         {Math.abs(comparison.comparison.daysWorkedChange).toFixed(1)}%
@@ -73,7 +73,7 @@ export const ComparisonChart: React.FC<ComparisonChartProps> = ({ comparison, la
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <p className="text-sm text-gray-600">{t.wages}</p>
                     <p className={`text-2xl font-bold ${comparison.comparison.wagesChange > 0 ? 'text-green-600' :
-                            comparison.comparison.wagesChange < 0 ? 'text-red-600' : 'text-gray-600'
+                        comparison.comparison.wagesChange < 0 ? 'text-red-600' : 'text-gray-600'
                         }`}>
                         {comparison.comparison.wagesChange > 0 ? '↑' : comparison.comparison.wagesChange < 0 ? '↓' : '→'}
                         {Math.abs(comparison.comparison.wagesChange).toFixed(1)}%
@@ -83,7 +83,7 @@ export const ComparisonChart: React.FC<ComparisonChartProps> = ({ comparison, la
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <p className="text-sm text-gray-600">{t.ongoingProjects}</p>
                     <p className={`text-2xl font-bold ${comparison.comparison.projectsChange > 0 ? 'text-green-600' :
-                            comparison.comparison.projectsChange < 0 ? 'text-red-600' : 'text-gray-600'
+                        comparison.comparison.projectsChange < 0 ? 'text-red-600' : 'text-gray-600'
                         }`}>
                         {comparison.comparison.projectsChange > 0 ? '↑' : comparison.comparison.projectsChange < 0 ? '↓' : '→'}
                         {Math.abs(comparison.comparison.projectsChange)}
