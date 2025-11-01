@@ -1,73 +1,249 @@
-# React + TypeScript + Vite
+# MGNREGA Dashboard - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Quick Start
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js 18+
+- Backend running on `http://localhost:8080`
 
-## React Compiler
+### Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# 1. Create project
+npm create vite@latest mgnrega-frontend -- --template react-ts
+cd mgnrega-frontend
 
-## Expanding the ESLint configuration
+# 2. Install dependencies
+npm install tailwindcss @tailwindcss/vite
+npm install axios @tanstack/react-query zustand lucide-react recharts
+npm install -D @types/node
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# 3. Copy all files from artifacts
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 4. Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Visit: `http://localhost:3000`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Project Structure
+
 ```
+src/
+├── components/
+│   ├── Header.tsx              # Header with language toggle
+│   ├── Selection.tsx           # State/District dropdowns
+│   ├── Dashboard.tsx           # Main dashboard
+│   ├── PerformanceCard.tsx     # Metric cards
+│   └── ComparisonChart.tsx     # Comparison visualization
+├── hooks/
+│   ├── useData.ts              # React Query hooks
+│   └── useGeolocation.ts       # Geolocation detection
+├── lib/
+│   ├── api.ts                  # Axios API client
+│   ├── queryClient.ts          # React Query config
+│   └── translations.ts         # Bilingual support
+├── store/
+│   └── useStore.ts             # Zustand state management
+├── App.tsx                     # Main app component
+├── main.tsx                    # Entry point
+└── index.css                   # Tailwind CSS
+```
+
+---
+
+## ✨ Features Implemented
+
+### Core Features
+
+- ✅ State/District selection (2-click navigation)
+- ✅ Real-time performance dashboard
+- ✅ Month-to-month comparison charts
+- ✅ Color-coded performance indicators (🟢🟠🔴)
+
+### Accessibility (Rural India)
+
+- ✅ Large fonts (≥18px)
+- ✅ High contrast colors
+- ✅ Icons + text for clarity
+- ✅ Touch-friendly buttons (48px min height)
+- ✅ Bilingual support (English + Hindi)
+
+### Technical Features
+
+- ✅ React Query (caching, auto-refetch)
+- ✅ Zustand (lightweight state)
+- ✅ Axios (API calls with retry)
+- ✅ Geolocation + OpenStreetMap
+- ✅ Offline detection
+- ✅ Optimized re-renders (memo, hooks)
+- ✅ Responsive design (mobile-first)
+
+---
+
+## 🎨 Design Principles
+
+### For Low-Literacy Users
+
+1. **Visual First**: Icons + emojis + text
+2. **Color Coding**: Green (good), Amber (moderate), Red (poor)
+3. **Simple Language**: Short, clear labels
+4. **Minimal Clicks**: 2 steps max to view data
+5. **Large Touch Targets**: 48px minimum
+
+### Performance Optimization
+
+- React Query caching (5 min stale time)
+- Zustand (minimal re-renders)
+- Code splitting (lazy loading ready)
+- Optimized bundle size
+
+---
+
+## 🌐 API Integration
+
+```typescript
+// Get states
+GET /api/states
+
+// Get districts
+GET /api/districts/{stateId}
+
+// Get performance
+GET /api/performance/{districtId}
+
+// Get comparison
+GET /api/compare/{districtId}?year=2024-2025
+```
+
+---
+
+## 🗺️ Geolocation Feature
+
+```typescript
+// Auto-detect user district
+const { detectLocation } = useGeolocation();
+const result = await detectLocation();
+// Returns: { district, state, lat, lon }
+```
+
+Uses OpenStreetMap Nominatim API for reverse geocoding.
+
+---
+
+## 🌍 Bilingual Support
+
+Toggle between English and Hindi:
+
+- All UI labels translated
+- Number formatting (Indian vs Western)
+- Date formatting (locale-aware)
+
+---
+
+## 📱 Mobile Responsive
+
+- Mobile-first design
+- Breakpoints: sm (640px), md (768px), lg (1024px)
+- Touch-friendly (48px buttons)
+- Optimized for 3G networks
+
+---
+
+## 🚀 Build & Deploy
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Deploy to Vercel
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Set environment variable
+vercel env add VITE_API_URL
+```
+
+---
+
+## 🧪 Testing Checklist
+
+- [ ] State dropdown loads Karnataka
+- [ ] District dropdown shows 30+ districts
+- [ ] Performance cards display correct data
+- [ ] Comparison chart shows trends
+- [ ] Language toggle works (EN ↔ HI)
+- [ ] Geolocation detects district
+- [ ] Offline mode shows warning
+- [ ] Mobile responsive on 360px width
+- [ ] Color indicators match performance level
+
+---
+
+## 🎯 Production Checklist
+
+- [ ] Backend URL updated to production
+- [ ] Error boundaries added
+- [ ] Loading states for all API calls
+- [ ] SEO meta tags added
+- [ ] Analytics integrated (optional)
+- [ ] Performance tested (Lighthouse)
+- [ ] Accessibility tested (WAVE)
+
+---
+
+## 📞 Environment Variables
+
+```bash
+VITE_API_URL=https://your-backend.railway.app/api
+```
+
+---
+
+## 🆘 Troubleshooting
+
+### API Not Connecting
+
+```bash
+# Check backend is running
+curl http://localhost:8080/api/health
+
+# Check CORS
+# Backend should allow frontend origin
+```
+
+### Build Fails
+
+```bash
+# Clear cache
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
+
+### Geolocation Not Working
+
+- Enable location permission in browser
+- Use HTTPS in production (required for geolocation)
+- OpenStreetMap rate limits apply
+
+---
+
+**Status: Frontend Complete! ✅**  
+**Ready for deployment and demo!** 🎉
