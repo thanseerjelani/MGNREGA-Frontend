@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
 
     return (
         <>
-            <header className="bg-linear-to-r from-blue-600 to-blue-800 text-white shadow-lg">
+            <header className="sticky top-0 z-40 bg-linear-to-r from-blue-600 to-blue-800 text-white shadow-lg">
                 <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     {/* Title Section */}
                     <div className="flex flex-col">
