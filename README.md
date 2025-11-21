@@ -1,13 +1,37 @@
-# MGNREGA Dashboard - Frontend
+# 🌐 Our Voice, Our Rights – MGNREGA Dashboard
+
+> A simple, visual, bilingual interface to make government MGNREGA data accessible to every Indian citizen — especially rural communities with low digital literacy.
+
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://voicesforrights.netlify.app)
+[![Backend](https://img.shields.io/badge/backend-live-blue)](https://ourvoiceforrights.onrender.com)
+[![License](https://img.shields.io/badge/license-proprietary-red)](#-license)
+
+---
+
+## 🌟 Project Vision
+
+MGNREGA benefits **12.15+ Crore rural Indians** in 2025 — yet the official data remains inaccessible for most citizens.
+
+The **Our Voice, Our Rights** frontend transforms complex datasets into a simple, visual, mobile-friendly dashboard that even first-time smartphone users can understand:
+
+- ✅ **Visual-first design**
+- ✅ **Minimal text, clear icons**
+- ✅ **High contrast**
+- ✅ **Bilingual UI** (English + Hindi)
+- ✅ **Built for rural India's digital realities**
+
+This frontend integrates with the production backend to present performance metrics for Karnataka's 30+ districts — and soon, all Indian states.
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- Backend running on `http://localhost:8080`
+- **Node.js 18+**
+- Backend running at: `http://localhost:8080`
 
-### Setup
+### Setup & Run
 
 ```bash
 # 1. Create project
@@ -19,13 +43,14 @@ npm install tailwindcss @tailwindcss/vite
 npm install axios @tanstack/react-query zustand lucide-react recharts
 npm install -D @types/node
 
-# 3. Copy all files from artifacts
+# 3. Copy project files
+# (Copy all source files to their respective directories)
 
-# 4. Start development server
+# 4. Start locally
 npm run dev
 ```
 
-Visit: `http://localhost:3000`
+**Visit:** `http://localhost:3000`
 
 ---
 
@@ -34,126 +59,120 @@ Visit: `http://localhost:3000`
 ```
 src/
 ├── components/
-│   ├── Header.tsx              # Header with language toggle
-│   ├── Selection.tsx           # State/District dropdowns
-│   ├── Dashboard.tsx           # Main dashboard
-│   ├── PerformanceCard.tsx     # Metric cards
-│   └── ComparisonChart.tsx     # Comparison visualization
+│   ├── Header.tsx
+│   ├── Selection.tsx
+│   ├── Dashboard.tsx
+│   ├── PerformanceCard.tsx
+│   └── ComparisonChart.tsx
 ├── hooks/
-│   ├── useData.ts              # React Query hooks
-│   └── useGeolocation.ts       # Geolocation detection
+│   ├── useData.ts
+│   └── useGeolocation.ts
 ├── lib/
-│   ├── api.ts                  # Axios API client
-│   ├── queryClient.ts          # React Query config
-│   └── translations.ts         # Bilingual support
+│   ├── api.ts
+│   ├── queryClient.ts
+│   └── translations.ts
 ├── store/
-│   └── useStore.ts             # Zustand state management
-├── App.tsx                     # Main app component
-├── main.tsx                    # Entry point
-└── index.css                   # Tailwind CSS
+│   └── useStore.ts
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
 ---
 
-## ✨ Features Implemented
+## ✨ Key Features
 
-### Core Features
+### Core Dashboard
 
-- ✅ State/District selection (2-click navigation)
-- ✅ Real-time performance dashboard
-- ✅ Month-to-month comparison charts
-- ✅ Color-coded performance indicators (🟢🟠🔴)
+- 🗺️ State & district selection
+- 📊 Real-time district performance
+- 📈 Month-to-month comparison charts
+- 🎨 Color-coded indicators (🟢 🟠 🔴)
 
-### Accessibility (Rural India)
+### Accessibility for Rural India
 
-- ✅ Large fonts (≥18px)
-- ✅ High contrast colors
-- ✅ Icons + text for clarity
-- ✅ Touch-friendly buttons (48px min height)
-- ✅ Bilingual support (English + Hindi)
+- 🔤 Large, readable fonts
+- 🎨 High contrast palette
+- 🖼️ Icons + text labels
+- 👆 Touch-friendly buttons (≥48px)
+- 🚀 Minimal clicks (2-step flow)
 
-### Technical Features
+### Technical Highlights
 
-- ✅ React Query (caching, auto-refetch)
-- ✅ Zustand (lightweight state)
-- ✅ Axios (API calls with retry)
-- ✅ Geolocation + OpenStreetMap
-- ✅ Offline detection
-- ✅ Optimized re-renders (memo, hooks)
-- ✅ Responsive design (mobile-first)
+- ⚡ React Query caching + retry
+- 🗃️ Zustand lightweight state
+- 🌐 Axios API wrapper
+- 📡 Offline detection
+- 📍 Geolocation-based district detection
+- 📱 Mobile-first layout
+- ⚙️ Optimized re-renders
 
 ---
 
-## 🎨 Design Principles
+## 🧠 Design Principles
 
 ### For Low-Literacy Users
 
-1. **Visual First**: Icons + emojis + text
-2. **Color Coding**: Green (good), Amber (moderate), Red (poor)
-3. **Simple Language**: Short, clear labels
-4. **Minimal Clicks**: 2 steps max to view data
-5. **Large Touch Targets**: 48px minimum
+| Principle | Implementation |
+|-----------|----------------|
+| **Visual-first interface** | Icons and colors over text |
+| **Clear color cues** | Green/Orange/Red status |
+| **Simple language** | Grade 5 reading level |
+| **Minimal navigation** | 2-step flow maximum |
+| **Large touch targets** | 48px minimum tap area |
 
-### Performance Optimization
+### Performance Optimizations
 
-- React Query caching (5 min stale time)
-- Zustand (minimal re-renders)
-- Code splitting (lazy loading ready)
-- Optimized bundle size
+- ✅ React Query cache (5 min stale)
+- ✅ Memoized components
+- ✅ Efficient API calls
+- ✅ Lazy loading ready
+- ✅ Minimal bundle footprint
 
 ---
 
 ## 🌐 API Integration
 
 ```typescript
-// Get states
 GET /api/states
-
-// Get districts
 GET /api/districts/{stateId}
-
-// Get performance
 GET /api/performance/{districtId}
-
-// Get comparison
 GET /api/compare/{districtId}?year=2024-2025
 ```
 
 ---
 
-## 🗺️ Geolocation Feature
+## 🗺️ Geolocation Detection
 
 ```typescript
-// Auto-detect user district
 const { detectLocation } = useGeolocation();
 const result = await detectLocation();
-// Returns: { district, state, lat, lon }
+// returns { district, state, lat, lon }
 ```
 
-Uses OpenStreetMap Nominatim API for reverse geocoding.
+Uses **OpenStreetMap Nominatim** for reverse geocoding.
 
 ---
 
 ## 🌍 Bilingual Support
 
-Toggle between English and Hindi:
-
-- All UI labels translated
-- Number formatting (Indian vs Western)
-- Date formatting (locale-aware)
+- 🇬🇧 English ↔ 🇮🇳 Hindi toggle
+- 🔢 Locale-based number formatting
+- 📅 India-style date formatting
+- ⚡ Real-time language switching
 
 ---
 
 ## 📱 Mobile Responsive
 
-- Mobile-first design
-- Breakpoints: sm (640px), md (768px), lg (1024px)
-- Touch-friendly (48px buttons)
-- Optimized for 3G networks
+- ✅ Fully mobile-first layout
+- ✅ 360px support
+- ✅ High contrast visuals
+- ✅ Optimized for slow networks
 
 ---
 
-## 🚀 Build & Deploy
+## 🚀 Build & Deployment
 
 ### Development
 
@@ -167,52 +186,46 @@ npm run dev
 npm run build
 ```
 
-### Deploy to Vercel
+### Deploy to Vercel / Netlify
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
 vercel
-
-# Set environment variable
-vercel env add VITE_API_URL
 ```
+
+### Environment Variables
+
+```env
+VITE_API_URL=https://your-backend/api
+VITE_OSM_API_URL=https://nominatim.openstreetmap.org
+```
+
+### Live Demo
+
+👉 **[https://voicesforrights.netlify.app](https://voicesforrights.netlify.app)**
 
 ---
 
 ## 🧪 Testing Checklist
 
-- [ ] State dropdown loads Karnataka
-- [ ] District dropdown shows 30+ districts
-- [ ] Performance cards display correct data
-- [ ] Comparison chart shows trends
-- [ ] Language toggle works (EN ↔ HI)
-- [ ] Geolocation detects district
-- [ ] Offline mode shows warning
-- [ ] Mobile responsive on 360px width
-- [ ] Color indicators match performance level
+- [ ] State & district loading
+- [ ] Performance metrics accuracy
+- [ ] Comparison charts rendering
+- [ ] Language toggle working
+- [ ] Geolocation functioning
+- [ ] Offline fallback
+- [ ] Full mobile responsiveness
+- [ ] Lighthouse performance ≥ 90
 
 ---
 
 ## 🎯 Production Checklist
 
-- [ ] Backend URL updated to production
-- [ ] Error boundaries added
-- [ ] Loading states for all API calls
-- [ ] SEO meta tags added
-- [ ] Analytics integrated (optional)
-- [ ] Performance tested (Lighthouse)
-- [ ] Accessibility tested (WAVE)
-
----
-
-## 📞 Environment Variables
-
-```bash
-VITE_API_URL=https://your-backend.railway.app/api
-```
+- [ ] Replace API URL with production backend
+- [ ] API error boundaries
+- [ ] Loading screens
+- [ ] SEO meta tags
+- [ ] Optional analytics
+- [ ] Accessibility tested
 
 ---
 
@@ -221,29 +234,64 @@ VITE_API_URL=https://your-backend.railway.app/api
 ### API Not Connecting
 
 ```bash
-# Check backend is running
 curl http://localhost:8080/api/health
-
-# Check CORS
-# Backend should allow frontend origin
 ```
 
-### Build Fails
+Check CORS + backend URL.
+
+### Build Issues
 
 ```bash
-# Clear cache
 rm -rf node_modules package-lock.json
 npm install
-npm run build
 ```
 
-### Geolocation Not Working
+### Geolocation Fails
 
-- Enable location permission in browser
-- Use HTTPS in production (required for geolocation)
-- OpenStreetMap rate limits apply
+- Browser permission required
+- HTTPS required in production
+- Check OSM rate limits
 
 ---
 
-**Status: Frontend Complete! ✅**  
-**Ready for deployment and demo!** 🎉
+## 🔒 License
+
+**Copyright (c) 2025 Thanseer Jelani**
+
+All rights reserved.
+
+This project is publicly viewable for transparency and learning purposes only. Unauthorized copying, modification, distribution, or use of the codebase, in whole or in part, without express written permission, is strictly prohibited.
+
+---
+
+## 🤝 Contributing
+
+This is a personal project built for public good and social impact. At this time, external code contributions are not open, but you may:
+
+- 🐛 Open issues
+- 📝 Report bugs
+- 💡 Suggest improvements
+- ✨ Request features
+
+Thank you for supporting the initiative!
+
+---
+
+## 📞 Contact
+
+**Developer:** Thanseer Jelani  
+**Email:** thanseerjelani@gmail.com  
+**LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+
+**Backend:** [ourvoiceforrights.onrender.com](https://ourvoiceforrights.onrender.com)  
+**Frontend:** [voicesforrights.netlify.app](https://voicesforrights.netlify.app)
+
+---
+
+<div align="center">
+
+**Built with ❤️ for Rural India 🇮🇳**
+
+`#BuiltForIndia` `#DigitalIndia` `#SocialImpact`
+
+</div>
