@@ -37,8 +37,8 @@ function App() {
 
         <footer className="bg-gray-800 text-white py-6 mt-12">
           <div className="container mx-auto px-4 text-center">
-            <p className="text-lg">© 2025 Our Voice, Our Rights - MGNREGA Dashboard</p>
-            <p className="text-sm mt-2 opacity-75">Build For Bharat</p>
+            <p className="text-lg">© 2025 Our Voice, Our Rights — MGNREGA Dashboard</p>
+<p className="text-sm mt-2 opacity-75">Built for Citizens. Built for Inclusion. Built for Bharat.</p>
           </div>
         </footer>
       </div>
